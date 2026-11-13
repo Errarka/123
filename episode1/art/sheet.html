@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+body{margin:0;background:#06080d;font-family:Arial,sans-serif;color:#e9e6dc}
+#s{width:1600px;padding:40px;box-sizing:border-box}
+h1{margin:0 0 6px;font:900 54px 'Arial Black',Arial;letter-spacing:2px}h1 b{color:#e2383f}
+.sub{color:#8792a8;font-size:24px;margin-bottom:30px}
+h2{font-size:28px;color:#e8c547;margin:30px 0 14px;letter-spacing:3px}
+.row{display:flex;gap:20px}.card{background:#0f1420;border-radius:16px;padding:14px;flex:1;text-align:center}
+.card svg{display:block;margin:auto}.n{font-weight:900;font-size:24px;margin-top:8px}.d{color:#8792a8;font-size:17px;line-height:1.35;margin-top:4px}
+.pal{display:flex;gap:10px}.pal div{flex:1;height:60px;border-radius:10px;display:flex;align-items:end;padding:6px;font-size:14px;color:#fff;text-shadow:0 1px 2px #000}
+</style></head><body><div id="s"></div><script src="art.js"></script><script>
+const C=(fn,o,vb='0 0 200 400',w=236,h=380)=>`<svg viewBox="${vb}" width="${w}" height="${h}">${fn(o)}</svg>`;
+const B=(fn,o)=>`<svg viewBox="0 0 1080 1920" width="330" height="587" style="border-radius:10px">${fn(o)}</svg>`;
+const cards=[
+ ['Алиса, 36',C(alisa,{brow:'worry',dx:0.4}),'таксистка · боится темноты<br>ключ с биркой «кв. 7»'],
+ ['Курьер',`<svg viewBox="-60 0 240 400" width="236" height="380">${courier({dx:-0.5,radio:true})}</svg>`,'огромный короб «ЕДА»<br>в коробе — рация'],
+ ['Старый машинист',`<svg viewBox="0 0 200 400" width="236" height="380">${machinist({dx:0.3})}</svg>`,'«особый рейс… у седьмой двери»<br>рассказывает слишком гладко'],
+ ['Охранники ×4',C(guard),'без формы · витой наушник<br>лица в тени'],
+ ['Тот, кто шипит',C(beast,{eye:1,steam:1}),'второй поезд из темноты<br>«монстр» финала'],
+];
+const faces=[['тревога',alisa({brow:'worry'})],['шок',alisa({brow:'worry',mouth:'gasp',dx:-0.8})],['моргание',alisa({blink:1})],['решимость',alisa({brow:'angry'})]];
+document.getElementById('s').innerHTML=`<h1>ОГРАБЛЕНИЕ · <b>ТУННЕЛЬ</b></h1><div class="sub">Серия 1 · лист персонажей и фонов · плоский 2D, тёмная палитра</div>
+<h2>ГЕРОИ</h2><div class="row">${cards.map(c=>`<div class="card">${c[1]}<div class="n">${c[0]}</div><div class="d">${c[2]}</div></div>`).join('')}</div>
+<h2>АЛИСА — ЭМОЦИИ</h2><div class="row">${faces.map(f=>`<div class="card"><svg viewBox="40 30 130 140" width="200" height="215">${f[1]}</svg><div class="d">${f[0]}</div></div>`).join('')}
+<div class="card" style="flex:1.4"><svg viewBox="0 0 400 300" width="330" height="250"><rect width="400" height="300" rx="14" fill="#141b2c"/><g transform="translate(100 -60) scale(1.8)">${''}</g><g transform="translate(230 150) scale(3)"><circle r="9" fill="none" stroke="#d8a93a" stroke-width="3.5"/><rect x="-3" y="8" width="6" height="34" fill="#d8a93a"/><rect x="3" y="26" width="8" height="5" fill="#d8a93a"/><rect x="3" y="35" width="6" height="5" fill="#d8a93a"/><path d="M-8 0 L-34 22 L-24 40 L-4 14" fill="#c9c2a8"/><text x="-26" y="30" font-size="10" font-family="Arial" font-weight="700" fill="#07090f" transform="rotate(-35 -22 26)">кв.7</text></g></svg><div class="d">ключ — главный предмет</div></div></div>
+<h2>ЛОКАЦИИ</h2><div class="row">${[['Такси, ночь, дождь',B(bgTaxi)],['Последний вагон',B(bgCar)],['Туннель · дверь 7',B(bgTunnel,{door:0.7})],['Перегон перекрыт',B(bgBlocked)]].map(b=>`<div class="card">${b[1]}<div class="n" style="font-size:20px">${b[0]}</div></div>`).join('')}</div>
+<h2>ПАЛИТРА</h2><div class="pal">${[['ночь','#0a0d16'],['сталь','#1d2536'],['туман','#3c4760'],['лампа','#e8c547'],['тревога','#e2383f'],['курьер','#1f8a84'],['ключ','#d8a93a'],['кожанка','#3a3528']].map(p=>`<div style="background:${p[1]}">${p[0]}</div>`).join('')}</div>`;
+</script></body></html>
